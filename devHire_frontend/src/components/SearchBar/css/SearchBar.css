@@ -1,0 +1,13 @@
+.searchbar_box{
+    width: 40rem;
+    border-radius: 10px;
+}
+
+.searchbar_box input{
+    width: 100%;
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    outline: none;
+    color: black;
+}
