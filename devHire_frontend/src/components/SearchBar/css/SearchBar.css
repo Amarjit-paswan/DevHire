@@ -11,3 +11,9 @@
     outline: none;
     color: black;
 }
+
+.count_box{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}

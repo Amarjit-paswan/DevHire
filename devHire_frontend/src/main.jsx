@@ -13,6 +13,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import Home from './components/Home/Home.jsx'
 import Jobs from './components/Jobs/Jobs.jsx'
 import JobDetail from './components/Jobs/JobDetail.jsx'
+import { JobProvider } from './context/JobContext'
+import { SaveJob_Provider } from './context/JobSaveContext.jsx'
+import SavedJob from './components/Saved_Jobs/SavedJob.jsx'
 
 // Create a broswer route for different path 
 const router = createBrowserRouter([
@@ -21,13 +24,18 @@ const router = createBrowserRouter([
     element: <Home />,
     children:[
       {index:true, element:<Jobs />},
-      {path:"/job", element:<JobDetail />}
+      {path:"/job/:id", element:<JobDetail />},
+      {path:"/saved_job", element:<SavedJob />}
     ]
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <JobProvider>
+      <SaveJob_Provider>
+        <RouterProvider router={router} />
+      </SaveJob_Provider>
+    </JobProvider>
   </StrictMode>,
 )

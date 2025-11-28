@@ -4,6 +4,7 @@ import './css/Home.css'
 import SearchBar from '../SearchBar/SearchBar'
 import Jobs from '../Jobs/Jobs'
 import { Outlet } from 'react-router-dom'
+import SaveJob from '../Saved_Jobs/SaveJob'
 
 
 function Home() {
@@ -19,8 +20,16 @@ function Home() {
                         <h2 className='fw-bold text-white'>Dev<span className='text-black'>Hire</span></h2>
                     </div>
 
-                    {/* Import SearchBar components  */}
-                    <SearchBar />
+                    <div className="d-flex gap-2">
+
+                        {/* Import SearchBar components  */}
+                        <SearchBar />
+
+                        {/* Import Saved job components  */}
+                        <SaveJob />
+                    </div>
+
+                    
                 </div>
 
                 {/* Body section start  */}
