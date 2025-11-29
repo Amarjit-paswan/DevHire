@@ -16,6 +16,11 @@ import JobDetail from './components/Jobs/JobDetail.jsx'
 import { JobProvider } from './context/JobContext'
 import { SaveJob_Provider } from './context/JobSaveContext.jsx'
 import SavedJob from './components/Saved_Jobs/SavedJob.jsx'
+import { SearchProvider } from './context/SearchContext.jsx'
+import { FilterProvider } from './context/FilterContext.jsx'
+import JobType from './components/Jobs/JobType.jsx'
+import { JobTypeProvider } from './context/JobTypeContext.jsx'
+import { JobSalaryProvider } from './context/JobSalaryContext.jsx'
 
 // Create a broswer route for different path 
 const router = createBrowserRouter([
@@ -34,7 +39,15 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <JobProvider>
       <SaveJob_Provider>
-        <RouterProvider router={router} />
+        <SearchProvider>
+          <FilterProvider>
+            <JobTypeProvider>
+              <JobSalaryProvider>
+                <RouterProvider router={router} />
+              </JobSalaryProvider>
+            </JobTypeProvider>
+          </FilterProvider>
+        </SearchProvider>
       </SaveJob_Provider>
     </JobProvider>
   </StrictMode>,

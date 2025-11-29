@@ -27,9 +27,9 @@ function Job_Card({job, onSelect, isSaved, OntoggleSaveJob}) {
             {/* Skills must have for job */}
             <div className="skills mt-2 d-flex gap-2">
                 { job.skills && (
+                    
                     job.skills.map((skill)=>
-
-                        <div className="skill btn btn-skill">{skill}</div>
+                        <div className="skill btn btn-skill" >{skill}</div>
                     )
                 )}
                

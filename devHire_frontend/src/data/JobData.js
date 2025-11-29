@@ -6,7 +6,7 @@ export const jobData = [
         company: "Tech Corp",
         skills: ["React", "CSS", "JavaScript", "PHP"],
         salary: 1200000,
-        jobType: "Full-Time",
+        jobType: "Full-time",
         description: "Build and maintain UI components"
     },
 
@@ -15,8 +15,8 @@ export const jobData = [
         title: "Backend Developer",
         company: "ServerX",
         skills: ["Node.js", "Express.js", "MongoDB", "React"],
-        salary: 150000,
-        jobType: "Part-Time",
+        salary: 15000,
+        jobType: "Part-time",
         description: "Design and develop backend REST APIs"
     },
 
@@ -26,7 +26,7 @@ export const jobData = [
         company: "WebGlobal",
         skills: ["React", "Node.js"],
         salary: 10000,
-        jobType: "Full-Time",
+        jobType: "Full-time",
         description: "Work on full-stack development"
     }
 ]

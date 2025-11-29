@@ -14,9 +14,9 @@ function SaveJob() {
       <>
           {/* Saved jobs list icon  */}
           
-          <p className="m-0 fs-5 text-white d-flex align-items-center border p-2 rounded" onClick={()=> nav('/saved_job')} style={ {cursor:"pointer"}}>
-            <i class="fa-solid fa-bookmark mx-0"></i> <div className="count_box d-flex justify-content-center align-items-center bg-warning  pb-1 px-1 fs-5 mx-1">{saveJob.length}</div> Saved Job
-          </p>
+          <div className="m-0 fs-5 text-white d-flex align-items-center border p-2 rounded" onClick={()=> nav('/saved_job')} style={ {cursor:"pointer"}}>
+            <i className="fa-solid fa-bookmark mx-0"></i> <div className="count_box d-flex justify-content-center align-items-center bg-warning  pb-1 px-1 fs-5 mx-1">{saveJob.length}</div> Saved Job
+          </div>
         </>
   )
 }

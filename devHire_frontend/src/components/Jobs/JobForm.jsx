@@ -3,17 +3,17 @@ import React from 'react'
 function JobForm() {
   return (
     // Apply form modal box 
-    <div class="modal fade" id="ApplyJobModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="ApplyJobModalLabel" aria-hidden="true" >
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Job Form</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div className="modal fade" id="ApplyJobModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="ApplyJobModalLabel" aria-hidden="true" >
+        <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+            <div className="modal-header">
+                <h1 className="modal-title fs-5" id="exampleModalLabel">Job Form</h1>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             {/* form box for apply job  */}
             <form action="" method="post">
-                <div class="modal-body text-start">
+                <div className="modal-body text-start">
                     
                     {/* Name  */}
                     <div className="mb-3">
@@ -33,9 +33,9 @@ function JobForm() {
                         <input type="text" className="form-control" placeholder='Enter Phone' />
                     </div>
                 </div>
-                <div class="p-3 pt-0">
+                <div className="p-3 pt-0">
                     <div className="d-grid">
-                        <button type="button" class="btn btn-danger">Submit</button>
+                        <button type="button" className="btn btn-danger">Submit</button>
                     </div>
                 </div>
             </form>

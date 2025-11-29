@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 //Import skillfilter css file
 import './css/SkillFilter.css'
 
+//Import dummy skills
+import { skills } from '../../data/SkillData';
+import { FilterContext } from '../../context/FilterContext';
+
 function SkillFilter() {
+
+  //Use context api for filter job
+  const { filterSkill, dispatch} = useContext(FilterContext);  
+  
+    
   return (
     <div>
         {/* Filter box  */}
@@ -12,22 +21,16 @@ function SkillFilter() {
             <div className="tilte text-start"><h5 className='text-danger'>Filter by Skills</h5></div>
 
             {/* Skills lists with checkbox  */}
-            <div className="input_box d-flex align-items-center gap-2 py-1">
-                <input type="checkbox" name="" id=""  />
-                <label htmlFor="" className="form-label ">JavaScript</label>
-            </div>
-            <div className="input_box d-flex align-items-center gap-2 py-1">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="" className="form-label">JavaScript</label>
-            </div>
-            <div className="input_box d-flex align-items-center gap-2 py-1">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="" className="form-label">JavaScript</label>
-            </div>
-            <div className="input_box d-flex align-items-center gap-2 py-1">
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="" className="form-label">JavaScript</label>
-            </div>
+            { skills && (
+                skills.map((skill)=> (
+                    <div className="input_box d-flex align-items-center gap-2 py-1" key={skill.id}>
+                        <input type="checkbox" name="" id="" value={skill.skill} onChange={(e) => dispatch({type:'selected-skill', payload:skill.skill})} />
+                        <label htmlFor="" className="form-label ">{skill.skill}</label>
+                    </div>
+                ))
+            ) }
+            
+            
         </div>
     </div>
   )
