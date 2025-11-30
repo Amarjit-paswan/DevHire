@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react'
+import React, { useContext, useReducer, useState } from 'react'
 import SkillFilter from '../Skill_Filter/SkillFilter'
 import Job_Card from './Job_Card'
 import '../../data/JobData'
@@ -13,6 +13,7 @@ import { JobTypeContext } from '../../context/JobTypeContext';
 import JobSalary from './JobSalary';
 import { JobSalaryContext } from '../../context/JobSalaryContext';
 import { reducer, searchIntitalState } from '../../reducer/searchReducer';
+import Pagination from '../Pagination/Pagination';
 
 function Jobs() {
 
@@ -52,7 +53,20 @@ function Jobs() {
     .filter((job)=> jobType.length === 0 ? true : jobType.every((type)=> job.jobType.includes(type) ))
 
     //filter by salary range
-    .filter((job)=> job.salary >= salary)
+    .filter((job)=> job.salary >= salary);
+
+
+       //Per page job
+  const jobPerPage = 3;
+
+  //Page no.
+  let [current_page, setCurrentPage] = useState(1);
+
+  //Formula for each page job show
+  const start = (current_page - 1) * jobPerPage;
+  const end = start + jobPerPage;
+
+  const PaginationJobs = filteredjobs.slice(start,end);
 
   //Use save job for global context
   const {saveJob, setSaveJob, toggleSaveJob, isSaved} = useContext(SaveJob_Context);
@@ -63,7 +77,8 @@ function Jobs() {
   const { dispatch: jobTypeDispatch } = useContext(JobTypeContext);
   const { dispatch: salaryDispatch } = useContext(JobSalaryContext);
 
-
+ 
+  
   //Navigate the page
   const nav = useNavigate();
   
@@ -109,7 +124,7 @@ function Jobs() {
           {filteredjobs.length === 0 ? (
               <p className="text-secondary fs-2">No jobs found </p>
           ) : (
-          filteredjobs && (filteredjobs.map((job)=> 
+          PaginationJobs && (PaginationJobs.map((job)=> 
             
               <Job_Card 
                 key={job.id} 
@@ -124,8 +139,15 @@ function Jobs() {
             
 
           ))) }
+
+          {/* Pagination container  */}
+        <div className="pagination d-flex w-100 justify-content-center">
+          <Pagination currentPage={current_page} setCurrentPage={setCurrentPage} />
+        </div>
            
         </div>
+
+        
     </div>
   )
 }

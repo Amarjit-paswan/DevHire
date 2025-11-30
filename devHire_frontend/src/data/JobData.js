@@ -28,5 +28,14 @@ export const jobData = [
         salary: 10000,
         jobType: "Full-time",
         description: "Work on full-stack development"
+    },
+    {
+        id: 4,
+        title: "DevOps Developer",
+        company: "Tech",
+        skills: ["MySql", "JavaScript", "PHP"],
+        salary: 30000,
+        jobType: "Full-time",
+        description: "Work on DevOps development"
     }
 ]
