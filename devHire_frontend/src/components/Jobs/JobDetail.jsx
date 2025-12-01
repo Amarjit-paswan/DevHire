@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import JobForm from './JobForm'
 import { useParams } from 'react-router-dom'
 import { JobContext } from '../../context/JobContext';
+import JobRecommended from './JobRecommended';
 
 function JobDetail() {
 
@@ -12,7 +13,7 @@ function JobDetail() {
     // Fetch url parameter 
     const {id} = useParams();
   return (
-    <div className='d-flex justify-content-between align-items-center  gap-4 w-100'>
+    <div className='d-flex justify-content-between align-items-start  gap-4 w-100'>
         
       
 
@@ -47,15 +48,35 @@ function JobDetail() {
                 )}
                
             </div>
-        </div>
 
-        {/* Job form component  */}
-        <JobForm />
+            
+            {/* Job form component  */}
+            <JobForm />
         
         {/* Apply now form button  */}
-        <div className='w-75 d-grid'>
-            <button type='button' className=" btn btn-lg btn-danger w-100" data-bs-toggle="modal" data-bs-target="#ApplyJobModal" >Apply Job</button>
+        <div className='w-75 d-grid mt-3'>
+            <button type='button' className=" btn btn-lg btn-danger w-50" data-bs-toggle="modal" data-bs-target="#ApplyJobModal" >Apply Job</button>
         </div>
+            
+        </div>
+
+        {/* Recommanded jobs for selected jobs  */}
+        <div className="recommanded_jobs_container p-3 border w-50 rounded border-danger">
+            
+            {/*title */}
+            <div className="title">
+                <h4 className='text-danger'>Recommended Jobs</h4>
+            </div>
+
+            <div className="d-flex flex-column gap-3 mt-3">
+                {/* Recommended jobs list  */}
+                <JobRecommended />
+                <JobRecommended />
+                <JobRecommended />
+            </div>
+        </div>
+
+        
 
     </div>
   )
