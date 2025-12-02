@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from 'react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 import SkillFilter from '../Skill_Filter/SkillFilter'
 import Job_Card from './Job_Card'
 import '../../data/JobData'
@@ -14,6 +14,8 @@ import JobSalary from './JobSalary';
 import { JobSalaryContext } from '../../context/JobSalaryContext';
 import { reducer, searchIntitalState } from '../../reducer/searchReducer';
 import Pagination from '../Pagination/Pagination';
+
+
 
 function Jobs() {
 
@@ -82,7 +84,7 @@ function Jobs() {
   //Navigate the page
   const nav = useNavigate();
   
-  
+
   
 
   return (

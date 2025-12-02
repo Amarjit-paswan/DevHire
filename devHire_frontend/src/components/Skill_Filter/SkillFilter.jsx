@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 //Import skillfilter css file
 import './css/SkillFilter.css'
@@ -6,12 +6,21 @@ import './css/SkillFilter.css'
 //Import dummy skills
 import { skills } from '../../data/SkillData';
 import { FilterContext } from '../../context/FilterContext';
+import { fetchSkill } from '../../api/skillApi';
 
 function SkillFilter() {
 
   //Use context api for filter job
   const { filterSkill, dispatch} = useContext(FilterContext);  
   
+ //fetch skills from backend using useEffect
+  const [skills, setSkill] = useState([]);
+  
+  useEffect(()=>{
+    fetchSkill()
+    .then((data)=> setSkill(data.skills))
+    .catch((err)=> console.log(err))
+  },[]);
     
   return (
     <div>
@@ -24,8 +33,8 @@ function SkillFilter() {
             { skills && (
                 skills.map((skill)=> (
                     <div className="input_box d-flex align-items-center gap-2 py-1" key={skill.id}>
-                        <input type="checkbox" name="" id="" value={skill.skill} onChange={(e) => dispatch({type:'selected-skill', payload:skill.skill})} />
-                        <label htmlFor="" className="form-label ">{skill.skill}</label>
+                        <input type="checkbox" name="" id="" value={skill.id} onChange={(e) => dispatch({type:'selected-skill', payload:skill.skill})} />
+                        <label htmlFor="" className="form-label ">{skill.name}</label>
                     </div>
                 ))
             ) }
