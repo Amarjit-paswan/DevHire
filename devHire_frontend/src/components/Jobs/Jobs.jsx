@@ -14,12 +14,13 @@ import JobSalary from './JobSalary';
 import { JobSalaryContext } from '../../context/JobSalaryContext';
 import { reducer, searchIntitalState } from '../../reducer/searchReducer';
 import Pagination from '../Pagination/Pagination';
+import { fetchSkill } from '../../api/skillApi';
 
 
 
 function Jobs() {
 
-
+  
 
   //Use jobs for global context
   const {jobs, setSelectedJob} = useContext(JobContext) ;
@@ -84,7 +85,11 @@ function Jobs() {
   //Navigate the page
   const nav = useNavigate();
   
-
+  useEffect(()=>{
+    fetchSkill().then((data)=>console.log(data)
+    ).catch((err)=>console.log(err)
+    )
+  })
   
 
   return (

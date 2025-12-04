@@ -18,7 +18,8 @@ function SkillFilter() {
   
   useEffect(()=>{
     fetchSkill()
-    .then((data)=> setSkill(data.skills))
+    .then((data)=>  setSkill(data.skills)
+    )
     .catch((err)=> console.log(err))
   },[]);
     

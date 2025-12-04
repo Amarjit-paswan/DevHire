@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,7 +9,7 @@ Route::get('/', function(){
 });
 
 // fetch skill 
-Route::get('/fetchSkill', [SkillController::class,'fetchSkill'] );
+Route::get('/fetchSkill', [JobController::class,'fetchJobs'] );
 
 //fetch jobs
 
