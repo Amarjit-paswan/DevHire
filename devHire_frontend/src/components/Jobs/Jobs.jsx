@@ -23,7 +23,7 @@ function Jobs() {
   
 
   //Use jobs for global context
-  const {jobs, setSelectedJob} = useContext(JobContext) ;
+  const {jobs, setJobs, setSelectedJob} = useContext(JobContext) ;
 
   //use searchcontext value for filtered jobs
   const {searchValue} = useContext(SearchContext);
@@ -41,7 +41,10 @@ function Jobs() {
       // const [state, dispatch] = useReducer(reducer, searchIntitalState);
       const { state, dispatch } = useContext(FilterContext);
 
-  
+    useEffect(()=>{
+      fetchSkill().then((data)=>setJobs(data.jobs)
+      ).catch((err)=>console.log(err))
+  },[])
 
   //Apply filtered jobs
   const filteredjobs = jobs.filter(  //filter by search
@@ -85,11 +88,7 @@ function Jobs() {
   //Navigate the page
   const nav = useNavigate();
   
-  useEffect(()=>{
-    fetchSkill().then((data)=>console.log(data)
-    ).catch((err)=>console.log(err)
-    )
-  })
+
   
 
   return (

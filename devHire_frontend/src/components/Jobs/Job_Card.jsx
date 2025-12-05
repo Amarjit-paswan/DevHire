@@ -6,6 +6,8 @@ import './css/Jobs.css'
 
 function Job_Card({job, onSelect, isSaved, OntoggleSaveJob}) {
     const nav = useNavigate();
+    console.log(job);
+    
   return (
     <div className='job_box p-3 rounded text-start d-flex justify-content-between align-items-center'>
         <div>
@@ -20,16 +22,16 @@ function Job_Card({job, onSelect, isSaved, OntoggleSaveJob}) {
             <div className="job_salary d-flex gap-3 align-items-center">
                 <p className="m-0 fw-bold">${job.salary} per year</p>
                 <div className="box btn btn-jobType ">
-                    {job.jobType}
+                    {job.job_type}
                 </div>
             </div>
 
             {/* Skills must have for job */}
             <div className="skills mt-2 d-flex gap-2">
-                { job.skills && (
+                { job.job_with_skill && (
                     
-                    job.skills.map((skill)=>
-                        <div className="skill btn btn-skill" >{skill}</div>
+                    job.job_with_skill.map((skill)=>
+                        <div className="skill btn btn-skill" >{skill.name}</div>
                     )
                 )}
                

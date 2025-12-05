@@ -11,5 +11,6 @@ Route::get('/', function(){
 // fetch skill 
 Route::get('/fetchSkill', [JobController::class,'fetchJobs'] );
 
-//fetch jobs
+//fetch selected job
+Route::get('/job/{id}', [JobController::class,'fetchSelectedJob']);
 

@@ -9,4 +9,9 @@ export const fetchSkill = async ()=>{
     return res.data;
 }
 
+export const selectedJob_detail = async(id)=>{
+    const res = await axios.get(`${API_URL}/job/${id}`);
+    return res.data;
+}
+
 

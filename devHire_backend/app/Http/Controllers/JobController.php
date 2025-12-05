@@ -12,7 +12,7 @@ class JobController extends Controller
 {   
     //Fetch jobs
     public function fetchJobs(){
-       $jobs =  ModelsJob::join('job_skills', 'job_skills.job_id', '=', 'jobs.id')->join('skills', 'skills.id', '=','job_skills.skill_id')->select('jobs.*','skills.name')->get();
+       $jobs = ModelsJob::with('jobWithSkill')->get();
 
 
     //    Proccessed everything is fine
@@ -21,5 +21,29 @@ class JobController extends Controller
         'skills' => Skill::all(),
         'jobs' => $jobs
        ],200);
+    }
+
+    //Fetch selected job
+    public function fetchSelectedJob(Request $request){
+
+      $id = $request->id;
+
+      //Return if job id is not exists
+      if(!ModelsJob::where('id',$id)->exists()){
+         return response()->json([
+            'status' => false,
+            'message' => 'Job id is invalid'
+         ],404);
+      }
+
+      //fetch only selected job
+      $job = ModelsJob::with('jobWithSkill')->find($id);
+
+      // return if everything correct 
+      return response()->json([
+         'status' => true,
+         'job' => $job
+      ],200);
+      
     }
 }
